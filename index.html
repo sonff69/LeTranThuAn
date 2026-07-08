@@ -6,8 +6,8 @@
     <title>Lê Trần Thu An Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Be Vietnam Pro (Font chữ thiết kế chuyên biệt cho Tiếng Việt để tránh mất dấu mũ) & Lora -->
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Be Vietnam Pro & Lora tối ưu hóa hoàn toàn cho Tiếng Việt -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,8 +16,9 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
-                        serif: ['"Lora"', 'serif'],
+                        // Sửa lỗi font triệt để bằng cách tạo một Font Stack bền vững nhất cho Tiếng Việt
+                        sans: ['"Be Vietnam Pro"', '"Inter"', '"Segoe UI"', 'sans-serif'],
+                        serif: ['"Lora"', '"Georgia"', 'serif'],
                     },
                     colors: {
                         pastel: {
@@ -142,9 +143,9 @@
                     Digital Portfolio
                 </span>
                 
-                <!-- Sửa lỗi font: Sử dụng font-sans Be Vietnam Pro cực kỳ vững chắc, giãn dòng leading-normal để tránh bị xén mất dấu huyền dấu mũ -->
-                <h1 class="text-5xl md:text-8xl font-sans font-black tracking-wide pt-6 pb-4 leading-normal select-none">
-                    <span class="text-gradient block hover:scale-[1.01] transition-transform duration-500 cursor-default filter drop-shadow-[0_2px_10px_rgba(177,159,251,0.2)]">LÊ TRẦN THU AN</span>
+                <!-- Khắc phục triệt để lỗi dấu: Chuyển sang dạng chữ viết hoa chữ cái đầu (Title Case) phối hợp với leading-relaxed để các diacritic (dấu huyền + mũ) hiển thị hoàn hảo nhất -->
+                <h1 class="text-5xl md:text-8xl font-sans font-black tracking-wide pt-6 pb-4 leading-relaxed select-none">
+                    <span class="text-gradient block hover:scale-[1.01] transition-transform duration-500 cursor-default filter drop-shadow-[0_2px_10px_rgba(177,159,251,0.2)]">Lê Trần Thu An</span>
                 </h1>
                 
                 <p class="max-w-xl mx-auto text-base md:text-lg text-gray-400 font-light leading-relaxed">
@@ -534,13 +535,13 @@
                                     <div class="flex items-center gap-2 cursor-pointer py-1.5 hover:text-pastel-purple transition" onclick="toggleFolder('folder-an')">
                                         <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="arrow-an"></i>
                                         <i class="fa-solid fa-folder text-yellow-400"></i>
-                                        <span class="text-yellow-200 font-semibold">Thuchanh_LeTranThuAn</span>
+                                        <span class="text-yellow-200 font-semibold font-sans">Thuchanh_LeTranThuAn</span>
                                     </div>
                                     <div class="pl-6 space-y-2" id="folder-an">
                                         <div class="flex items-center gap-2 cursor-pointer py-1.5 hover:text-pastel-purple transition" onclick="toggleFolder('folder-tailieu')">
                                             <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200" id="arrow-tailieu"></i>
                                             <i class="fa-solid fa-folder text-yellow-400"></i>
-                                            <span class="text-yellow-200">TaiLieu</span>
+                                            <span class="text-yellow-200 font-semibold font-sans">TaiLieu</span>
                                         </div>
                                         <div class="pl-6 space-y-2" id="folder-tailieu">
                                             <div class="flex items-center gap-2 cursor-pointer py-1 hover:text-pastel-purple text-gray-400" onclick="showFileDetails('ghi-chu-important')">
@@ -711,11 +712,11 @@
                             <span class="text-xs text-pastel-lavender font-bold block uppercase tracking-wider"><i class="fa-solid fa-hourglass-half mr-1"></i> Việc cần làm</span>
                             <div class="space-y-2" id="kanban-todo">
                                 <div class="bg-white/5 p-3 rounded-lg border border-white/5 cursor-pointer hover:border-pastel-purple hover:bg-white/10 transition" onclick="moveKanbanTask(this, 66)">
-                                    <h5 class="text-xs font-semibold text-gray-200">Tìm tài liệu nghiên cứu</h5>
+                                    <h5 class="text-xs font-semibold text-gray-200 font-sans">Tìm tài liệu nghiên cứu</h5>
                                     <p class="text-[10px] text-gray-400 font-light mt-1">Phân công: Thành viên nhóm 1</p>
                                 </div>
                                 <div class="bg-white/5 p-3 rounded-lg border border-white/5 cursor-pointer hover:border-pastel-purple hover:bg-white/10 transition" onclick="moveKanbanTask(this, 100)">
-                                    <h5 class="text-xs font-semibold text-gray-200">Viết nháp dàn ý slide</h5>
+                                    <h5 class="text-xs font-semibold text-gray-200 font-sans">Viết nháp dàn ý slide</h5>
                                     <p class="text-[10px] text-gray-400 font-light mt-1">Phân công: Lê Trần Thu An</p>
                                 </div>
                             </div>
@@ -726,7 +727,7 @@
                             <span class="text-xs text-green-400 font-bold block uppercase tracking-wider"><i class="fa-solid fa-circle-check mr-1"></i> Đã hoàn thành</span>
                             <div class="space-y-2 min-h-[120px]" id="kanban-done">
                                 <div class="bg-green-500/10 p-3 rounded-lg border border-green-500/20 text-gray-300">
-                                    <h5 class="text-xs font-semibold text-green-300">Xác định chủ đề chính của nhóm</h5>
+                                    <h5 class="text-xs font-semibold text-green-300 font-sans">Xác định chủ đề chính của nhóm</h5>
                                     <p class="text-[10px] text-gray-400 font-light mt-1">Hoàn thành đúng thời hạn</p>
                                 </div>
                             </div>
@@ -750,21 +751,21 @@
                             <div onclick="buildWorkflowPoster(1)" class="glass-card p-4 rounded-xl border border-pastel-purple cursor-pointer flex gap-4 items-center bg-white/10 transition-all duration-300" id="step-btn-1">
                                 <div class="text-lg text-pastel-purple"><i class="fa-regular fa-comment-dots"></i></div>
                                 <div>
-                                    <h5 class="text-xs font-semibold text-gray-200">1. Ý tưởng ChatGPT</h5>
+                                    <h5 class="text-xs font-semibold text-gray-200 font-sans">1. Ý tưởng ChatGPT</h5>
                                     <p class="text-[10px] text-gray-400 font-light">Tóm tắt sự nghiệp cô đọng</p>
                                 </div>
                             </div>
                             <div onclick="buildWorkflowPoster(2)" class="glass-card p-4 rounded-xl border border-white/5 cursor-pointer flex gap-4 items-center transition-all duration-300" id="step-btn-2">
                                 <div class="text-lg text-pastel-pink"><i class="fa-regular fa-image"></i></div>
                                 <div>
-                                    <h5 class="text-xs font-semibold text-gray-200">2. Minh họa DALL-E</h5>
+                                    <h5 class="text-xs font-semibold text-gray-200 font-sans">2. Minh họa DALL-E</h5>
                                     <p class="text-[10px] text-gray-400 font-light">Sân khấu âm nhạc ánh sáng</p>
                                 </div>
                             </div>
                             <div onclick="buildWorkflowPoster(3)" class="glass-card p-4 rounded-xl border border-white/5 cursor-pointer flex gap-4 items-center transition-all duration-300" id="step-btn-3">
                                 <div class="text-lg text-pastel-lavender"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                                 <div>
-                                    <h5 class="text-xs font-semibold text-gray-200">3. Bố cục Canva AI</h5>
+                                    <h5 class="text-xs font-semibold text-gray-200 font-sans">3. Bố cục Canva AI</h5>
                                     <p class="text-[10px] text-gray-400 font-light">Màu tím pastel huyền ảo</p>
                                 </div>
                             </div>
@@ -1082,11 +1083,9 @@
         function buildWorkflowPoster(stepNum) {
             document.querySelectorAll('#step-btn-1, #step-btn-2, #step-btn-3').forEach(btn => {
                 btn.classList.remove('bg-white/10', 'border-pastel-purple');
-                btn.classList.add('border-white/5');
             });
             
             const activeBtn = document.getElementById('step-btn-' + stepNum);
-            activeBtn.classList.remove('border-white/5');
             activeBtn.classList.add('bg-white/10', 'border-pastel-purple');
 
             const textLayer = document.getElementById('canvas-elements');
