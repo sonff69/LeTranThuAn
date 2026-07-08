@@ -6,8 +6,8 @@
     <title>Lê Trần Thu An Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Lora (Serif hỗ trợ Việt hóa hoàn hảo) & Plus Jakarta Sans -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Be Vietnam Pro (Font chữ thiết kế chuyên biệt cho Tiếng Việt để tránh mất dấu mũ) & Lora -->
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,7 +16,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['"Be Vietnam Pro"', 'sans-serif'],
                         serif: ['"Lora"', 'serif'],
                     },
                     colors: {
@@ -136,14 +136,17 @@
     <main class="relative z-10 max-w-7xl mx-auto px-6">
 
         <!-- Hero Section -->
-        <section class="min-h-screen flex flex-col justify-center items-center text-center pt-24 pb-12" id="hero">
+        <section class="min-h-screen flex flex-col justify-center items-center text-center pt-32 pb-12" id="hero">
             <div class="space-y-6">
                 <span class="inline-block px-4 py-1.5 rounded-full text-xs font-semibold glass-card text-pastel-purple tracking-widest uppercase animate-pulse-soft">
                     Digital Portfolio
                 </span>
-                <h1 class="text-5xl md:text-8xl font-serif font-bold tracking-tight py-4 leading-tight">
-                    <span class="text-gradient block hover:scale-[1.01] transition-transform duration-500 cursor-default">LÊ TRẦN THU AN</span>
+                
+                <!-- Sửa lỗi font: Sử dụng font-sans Be Vietnam Pro cực kỳ vững chắc, giãn dòng leading-normal để tránh bị xén mất dấu huyền dấu mũ -->
+                <h1 class="text-5xl md:text-8xl font-sans font-black tracking-wide pt-6 pb-4 leading-normal select-none">
+                    <span class="text-gradient block hover:scale-[1.01] transition-transform duration-500 cursor-default filter drop-shadow-[0_2px_10px_rgba(177,159,251,0.2)]">LÊ TRẦN THU AN</span>
                 </h1>
+                
                 <p class="max-w-xl mx-auto text-base md:text-lg text-gray-400 font-light leading-relaxed">
                     Chào bạn! Ghé thăm góc nhỏ lưu trữ hành trình học tập, trải nghiệm công nghệ số và ứng dụng AI cực kỳ thú vị của mình nhé.
                 </p>
@@ -404,7 +407,7 @@
                             <i class="fa-solid fa-star"></i> Định hướng tương lai
                         </h3>
                         <p class="text-sm text-gray-400 font-light leading-relaxed">
-                            Mình sẽ tiếp tục trau dồi các kỹ năng khai thác và chọn lọc thông tin số. Bên cạnh đó, mình sẽ áp dụng AI để dịch thuật, tạo kho từ vựng và tự làm các bộ flashcard học tiếng Trung cá nhân hóa, phục vụ thật tốt cho hành trình học ngôn ngữ lâu dài phía trước!
+                            Mình sẽ duy trì và phát huy thật tốt thói quen lưu trữ dữ liệu gọn gàng thế này. Bên cạnh đó, mình sẽ áp dụng AI để dịch thuật, tạo kho từ vựng và tự làm các bộ flashcard học tiếng Trung cá nhân hóa, phục vụ thật tốt cho hành trình học ngôn ngữ lâu dài phía trước!
                         </p>
                     </div>
                 </div>
@@ -814,7 +817,16 @@
             `
         };
 
-        /* Data list for Task 2 assessment metrics */
+        /* Data sources for Task 2 */
+        const sourceItems = [
+            { source: "Journal of Pragmatics (2026)", method: "Tổng quan nghiên cứu", update: "Rất mới", reliability: "★★★★★", type: "new" },
+            { source: "Int. Review of Pragmatics (2025)", method: "Phân tích lý thuyết", update: "Mới", reliability: "★★★★☆", type: "new" },
+            { source: "Two-faced compliments (2022)", method: "Phân tích ngữ dụng học", update: "Mới", reliability: "★★★★★", type: "new" },
+            { source: "Austin - Speech Acts (1962)", method: "Lý thuyết nền tảng", update: "Kinh điển", reliability: "★★★★★", type: "classic" },
+            { source: "Searle - Speech Acts (1969)", method: "Lý thuyết nền tảng", update: "Kinh điển", reliability: "★★★★★", type: "classic" }
+        ];
+
+        /* Assessment Metrics details */
         const sourceAssessments = [
             {
                 percent: "100%",
@@ -896,8 +908,10 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             document.body.style.overflow = 'hidden';
 
-            // Specific code-run initialization
-            if (taskId === 6) {
+            // Additional initialization on launch
+            if (taskId === 2) {
+                filterSources('all');
+            } else if (taskId === 6) {
                 quizIdx = 0;
                 quizScore = 0;
                 quizAttempts = 0;
@@ -918,7 +932,7 @@
             }
         }
 
-        /* Task 1 Folder Tree Toggle & Information display code */
+        /* Task 1 Folder Tree Toggle & Info Panel View Code */
         function toggleFolder(folderId) {
             const folder = document.getElementById(folderId);
             const arrow = document.getElementById('arrow-' + folderId.split('-')[1]);
@@ -944,7 +958,7 @@
                         <p><strong class="text-pastel-purple">Định dạng:</strong> Văn bản (.txt)</p>
                         <p><strong class="text-pastel-purple">Dung lượng:</strong> 2.1 KB</p>
                         <p><strong class="text-pastel-purple">Sửa đổi:</strong> 07/03/2026 3:04 CH</p>
-                        <p class="text-[11px] text-gray-400 bg-black/30 p-2 rounded border border-white/5 mt-3">
+                        <p class="text-[11px] text-gray-400 bg-black/30 p-2 rounded border border-white/5 mt-3 animate-float">
                             <strong>Nội dung:</strong> "Lưu ý thực hành trực tuyến quan trọng cho bài kiểm tra cuối kỳ của môn học!"
                         </p>
                     </div>
@@ -991,7 +1005,7 @@
             `;
         }
 
-        /* Task 2 Interactive Reliability dashboard assessment switcher */
+        /* Task 2 Interactive Assessment Switcher */
         function selectAcademicSource(idx, element) {
             document.querySelectorAll('.source-item-row').forEach(row => {
                 row.classList.remove('border-pastel-purple/30', 'bg-white/5');
@@ -1009,7 +1023,7 @@
             document.getElementById('rel-checklist').innerHTML = item.checklist;
         }
 
-        /* Task 3 Prompt simulation running engine */
+        /* Task 3 Prompt simulation running engine with delay */
         function selectPromptTab(tabType) {
             selectedPrompt = tabType;
             
@@ -1064,7 +1078,7 @@
             document.getElementById('kanban-progress-bar').style.width = progressVal + '%';
         }
 
-        /* Task 5 Poster modular assembly engine */
+        /* Task 5 Poster modular assembly engine with layered graphics */
         function buildWorkflowPoster(stepNum) {
             document.querySelectorAll('#step-btn-1, #step-btn-2, #step-btn-3').forEach(btn => {
                 btn.classList.remove('bg-white/10', 'border-pastel-purple');
